@@ -4,7 +4,7 @@ import PreventAccess from '../components/PreventAccess.component'
 
 function Deneme() {
     return (
-        <PreventAccess>
+        <PreventAccess isPathTrack={true}>
             <Col xs={7} md={6}>
                 <Card style={{ backgroundColor: "black" }}>
                     {/* <Button className="w-100" variant="light" disabled >Restoranımıza Hoş Geldiniz...</Button> */}

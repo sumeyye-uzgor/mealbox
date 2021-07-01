@@ -12,7 +12,7 @@ function Home() {
     //     () => console.log(history)
     // )
     return (
-        <Col xs={7} md={6}>
+        <Col xs={7} md={6} style={{ marginTop: "100px" }}>
             <Card style={{ backgroundColor: "black" }}>
                 {/* <Button className="w-100" variant="light" disabled >Restoranımıza Hoş Geldiniz...</Button> */}
 

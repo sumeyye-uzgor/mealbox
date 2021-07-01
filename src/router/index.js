@@ -1,5 +1,7 @@
 import Deneme from "../pages/Deneme"
 import Home from "../pages/Home.page"
+import { Redirect } from "react-router"
+import NotFound from "../pages/NotFound.page"
 
 const routes = [
     {
@@ -12,6 +14,12 @@ const routes = [
         path: "/deneme",
         exact: true,
         component: Deneme
+    }
+    , {
+        id: 2,
+        path: "*",
+        exact: false,
+        component: NotFound
     }
 ]
 
