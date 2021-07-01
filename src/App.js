@@ -1,15 +1,22 @@
 
 import data from './db/menuData'
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'react-bootstrap'
 // import './App.css'
 import routes from './router/index';
 import { Switch, Route } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { setMainMenus, setOtherMenus } from './redux/actions';
 
 function App() {
-  const menus = data.menus
-  console.log(menus)
+  // const menus = data.menus
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(setMainMenus(data.menus[0]))
+    dispatch(setOtherMenus(data.menus.filter(item => item.key !== 'main')))
+  })
+  // console.log(menus)
   return (
     <Container fluid className="m-0">
       <Row className="justify-content-center align-items-center m-0 p-0">

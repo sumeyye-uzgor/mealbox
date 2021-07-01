@@ -5,7 +5,6 @@ import ControlledCarousel from './ControlledCarousel.component'
 import TimeLine from './TimeLine.component'
 function PreventAccess({ children, redirectPath = "/", isPassable = false, isPathTrack = true }) {
     const history = useHistory()
-
     useEffect(() => {
         if (history.action === 'POP') {
             history.push(redirectPath)
