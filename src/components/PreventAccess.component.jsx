@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import { useHistory, Redirect } from 'react-router-dom'
-import ControlledCarousel from './ControlledCarousel.component'
+import { Container, Row } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
 import TimeLine from './TimeLine.component'
 function PreventAccess({ children, redirectPath = "/", isPassable = false, isPathTrack = true }) {
     const history = useHistory()

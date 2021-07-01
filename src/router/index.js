@@ -1,6 +1,5 @@
 import Deneme from "../pages/Deneme"
 import Home from "../pages/Home.page"
-import { Redirect } from "react-router"
 import NotFound from "../pages/NotFound.page"
 import ChooseMenu from "../pages/ChooseMenu"
 

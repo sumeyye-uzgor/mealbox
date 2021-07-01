@@ -1,8 +1,6 @@
 import React from 'react'
-import { useEffect } from 'react'
 import { Card, Col, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router'
-import { Link } from 'react-router-dom'
 
 function Home() {
     const history = useHistory()
