@@ -27,6 +27,18 @@ const rootReducer = (state = INITIAL_STATE, action) => {
                 isMenuSelection: true,
                 selectedMenu: action.payload,
             }
+        case types.ADD_SELECTED_ITEM:
+            return {
+                ...state,
+                selectedItems: state.selectedItems ? [...state.selectedItems, action.payload] : [action.payload]
+            }
+        case types.REMOVE_SELECTED_ITEM:
+            return {
+                ...state,
+                selectedItems: state.selectedItems.filter(
+                    item => item.name !== action.payload.name
+                )
+            }
         default:
             return state
     }

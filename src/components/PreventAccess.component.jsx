@@ -24,11 +24,11 @@ function PreventAccess({ children, redirectPath = "/", isPassable = false, isPat
 
                 :
                 <Row className="m-0">
-                    <Col className="d-none d-md-block position-fixed" md={2} style={{ paddingTop: "70px" }}>
+                    <Col className="d-none d-md-block position-fixed" md={3} style={{ paddingTop: "70px" }}>
                         <Sidebar />
                     </Col>
-                    <Col className="d-none d-md-block" md={3} />
-                    <Col xs={12} md={9} style={{ paddingTop: "70px" }}>
+                    <Col className="d-none d-md-block" md={4} />
+                    <Col xs={12} md={8} style={{ paddingTop: "70px" }}>
                         {children}
                     </Col>
 
