@@ -10,6 +10,7 @@ const INITIAL_STATE = {
     selectedDiscountMenu: null,
     isToastOpen: false,
     toastMessage: null,
+    lastLocation: '/',
 }
 const rootReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -32,7 +33,7 @@ const rootReducer = (state = INITIAL_STATE, action) => {
         case types.ADD_SELECTED_ITEM:
             return {
                 ...state,
-                selectedItems: state.selectedItems ? [...state.selectedItems, action.payload] : [action.payload]
+                selectedItems: state.selectedItems ? (!state.selectedItems.find(item => item.name === action.payload.name) ? [...state.selectedItems, action.payload] : state.selectedItems) : [action.payload]
             }
         case types.REMOVE_SELECTED_ITEM:
             return {
@@ -57,6 +58,11 @@ const rootReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 isToastOpen: false,
                 toastMessage: null,
+            }
+        case types.SET_LAST_LOCATION:
+            return {
+                ...state,
+                lastLocation: action.payload
             }
         default:
             return state

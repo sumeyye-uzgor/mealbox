@@ -1,10 +1,13 @@
 import React from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Link, useHistory } from 'react-router-dom'
 import { ReactComponent as BackIcon } from '../assets/BackIcon.svg'
 function StyledNavbar() {
+    const history = useHistory()
+    const loc = useSelector(state => state.lastLocation)
     return (
-        <Navbar expand="lg" fixed="top" style={{ zIndex: 5, color: 'white', backgroundColor: "black" }}>
+        <Navbar expand="lg" fixed="top" variant="dark" style={{ zIndex: 5, color: 'white', backgroundColor: "black" }}>
             <Container>
                 <Navbar.Brand href="/" style={{ color: 'white' }}>MealBox Ev Yemekleri</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -28,9 +31,9 @@ function StyledNavbar() {
                     </Nav>
                 </Navbar.Collapse>
                 <Nav.Link as="li" >
-                    <Link to="/about" style={{ textDecoration: "none", color: "white" }}>
-                        Geri <BackIcon width="30px" height="40px" />
-                    </Link>
+                    {/* <Link to="/about" style={{ textDecoration: "none", color: "white" }}> */}
+                    <BackIcon width="30px" height="40px" style={{ color: "white" }} onClick={() => history.push(loc)} />
+                    {/* </Link> */}
                 </Nav.Link>
 
             </Container>

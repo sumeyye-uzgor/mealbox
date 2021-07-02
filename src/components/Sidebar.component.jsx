@@ -17,7 +17,7 @@ function Sidebar() {
             <Row> <hr /></Row>
             {
                 selectedItems && selectedItems.map(
-                    item => <Row>
+                    item => <Row key={item.name}>
                         <Col xs={8}>{item.price} &#x20BA;</Col>
                         <Col xs={4} style={{ cursor: "pointer" }} onClick={() => dispatch(removeSelectedItem(item))}>Sil</Col>
                         <Col xs={12}> {item.name}</Col>

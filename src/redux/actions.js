@@ -39,3 +39,7 @@ export const openToast = (message) => ({
 export const closeToast = () => ({
     type: types.CLOSE_TOAST,
 })
+export const setLastLocation = (location) => ({
+    type: types.SET_LAST_LOCATION,
+    payload: location,
+})

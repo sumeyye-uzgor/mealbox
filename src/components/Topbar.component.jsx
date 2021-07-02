@@ -19,12 +19,12 @@ function Topbar() {
             <Dropdown.Menu style={{ width: "90vw", zIndex: 3 }} >
                 {
                     selectedItems && selectedItems.map(
-                        item => <Row>
-                            <Col xs={8}>{item.price} &#x20BA;</Col>
-                            <Col xs={4} style={{ cursor: "pointer" }} onClick={() => dispatch(removeSelectedItem(item))}>Sil</Col>
-                            <Col xs={12}> {item.name}</Col>
-
-                        </Row>
+                        item =>
+                            <Dropdown.Item key={item.name}>
+                                <Col xs={3} >{item.price} &#x20BA;</Col>
+                                <Col xs={5}> {item.name}</Col>
+                                <Col xs={4} style={{ cursor: "pointer" }} onClick={() => dispatch(removeSelectedItem(item))}>Sil</Col>
+                            </Dropdown.Item>
                     )
                 }
                 <Row className="mt-5">
