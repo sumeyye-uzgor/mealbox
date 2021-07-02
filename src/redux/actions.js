@@ -43,3 +43,15 @@ export const setLastLocation = (location) => ({
     type: types.SET_LAST_LOCATION,
     payload: location,
 })
+
+export const addDiscountMenuItem = (item) => ({
+    type: types.ADD_DISCOUNT_MENU_ITEM,
+    payload: item
+})
+export const removeDiscountMenuItem = (item) => ({
+    type: types.REMOVE_DISCOUNT_MENU_ITEM,
+    payload: item
+})
+export const removeDiscountMenu = () => ({
+    type: types.REMOVE_DISCOUNT_MENU,
+})

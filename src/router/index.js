@@ -1,8 +1,9 @@
 import Deneme from "../pages/Deneme"
 import Home from "../pages/Home.page"
 import NotFound from "../pages/NotFound.page"
-import ChooseMenu from "../pages/ChooseMenu"
+import ChooseMenu from "../pages/ChooseMenu.page"
 import DiscountMenus from "../pages/DiscountMenus.page"
+import DiscountMenuItems from "../pages/DiscountMenuItems.page"
 import Menu from "../pages/Menu.page"
 import Contact from "../pages/Contact.page"
 
@@ -37,6 +38,12 @@ const routes = [
         path: "/menu/:id",
         exact: true,
         component: Menu
+    },
+    {
+        id: 5,
+        path: "/indirimlimenu/yemeksecim",
+        exact: true,
+        component: DiscountMenuItems
     },
     {
         id: 12,

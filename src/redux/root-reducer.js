@@ -30,11 +30,17 @@ const rootReducer = (state = INITIAL_STATE, action) => {
                 isMenuSelection: true,
                 selectedMenu: action.payload,
             }
+        case types.SET_SELECTED_DISCOUNT_MENU:
+            return {
+                ...state,
+                selectedDiscountMenu: action.payload,
+            }
         case types.ADD_SELECTED_ITEM:
             return {
                 ...state,
                 selectedItems: state.selectedItems ? (!state.selectedItems.find(item => item.name === action.payload.name) ? [...state.selectedItems, action.payload] : state.selectedItems) : [action.payload]
             }
+
         case types.REMOVE_SELECTED_ITEM:
             return {
                 ...state,
@@ -63,6 +69,23 @@ const rootReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 lastLocation: action.payload
+            }
+        case types.ADD_DISCOUNT_MENU_ITEM:
+            const menu = state.selectedDiscountMenu
+            return {
+                ...state,
+                selectedDiscountMenu: { ...menu, items: menu.items ? [...menu.items, action.payload] : [action.payload] }
+            }
+        case types.REMOVE_DISCOUNT_MENU_ITEM:
+            const menu2 = state.selectedDiscountMenu
+            return {
+                ...state,
+                selectedDiscountMenu: { ...menu2, items: menu2.items.filter(item => item.id !== action.payload.id) }
+            }
+        case types.REMOVE_DISCOUNT_MENU:
+            return {
+                ...state,
+                selectedDiscountMenu: null,
             }
         default:
             return state

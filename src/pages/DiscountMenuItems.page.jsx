@@ -1,21 +1,48 @@
-import React from 'react'
-import { Row } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { Row, Col } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
 import MenuCard from '../components/MenuCard.component'
 import PreventAccess from '../components/PreventAccess.component'
+import { addDiscountMenuItem } from '../redux/actions'
 
 function DiscountMenuItems() {
-    const menus = useSelector(state => state.mainMenus)
-    const discMenus = menus.items[0]
-    console.log(discMenus)
+    const dispatch = useDispatch()
+    const [isSelectedArray, setIsSelectedArray] = useState([])
+    const [menus, setMenus] = useState([])
+    const discMenu = useSelector(state => state.selectedDiscountMenu)
+    const otherMenus = useSelector(state => state.otherMenus)
+    useEffect(() => {
+        setMenus(otherMenus.filter(menu => discMenu.subMenus.includes(menu.key)))
+        setIsSelectedArray(menus.map(() => false))
+
+    }, []
+    )
+    function handleSelection(item) {
+        dispatch(addDiscountMenuItem(item))
+
+    }
     return (
         <PreventAccess >
             {
-                discMenus &&
-                <Row>
+                menus &&
+                <Row className="text-center">
                     {
-                        discMenus.items.map(
-                            menu => <MenuCard key={menu.caption} isFromDiscount={true} menu={menu} />
+                        menus.map(
+                            (menu, idx) =>
+                            (
+                                <Col xs={12} key={menu.key}>
+                                    <Row style={{ color: "white" }} className="text-center">
+                                        {menu.description}
+                                    </Row>
+                                    <Row>
+                                        {menu.items.map(
+                                            item => <MenuCard key={item.name} isPrice={item.price ? true : false} menu={item} handleSelection={() => handleSelection(item)} />
+                                        )}
+                                    </Row>
+                                </Col>
+
+                            )
                         )
                     }
                 </Row>

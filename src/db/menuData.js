@@ -1179,7 +1179,7 @@ const data = {
                     "price": 72
                 },
                 {
-                    "name": null,
+                    "name": "Tatlı İstemiyorum",
                     "caption": "Tatlı İstemiyorum",
                     "image": "https://i.ibb.co/tZSb64N/istemiyorum.jpg",
                     "price": 72
