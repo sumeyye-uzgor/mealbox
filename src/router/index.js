@@ -4,6 +4,7 @@ import NotFound from "../pages/NotFound.page"
 import ChooseMenu from "../pages/ChooseMenu"
 import DiscountMenus from "../pages/DiscountMenus.page"
 import Menu from "../pages/Menu.page"
+import Contact from "../pages/Contact.page"
 
 
 const routes = [
@@ -36,6 +37,12 @@ const routes = [
         path: "/menu/:id",
         exact: true,
         component: Menu
+    },
+    {
+        id: 12,
+        path: "/iletisim",
+        exact: true,
+        component: Contact
     },
     {
         id: 789,

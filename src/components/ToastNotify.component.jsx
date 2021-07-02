@@ -10,23 +10,25 @@ function ToastNotify() {
     const dispatch = useDispatch()
     return (
         <div>
-            isToastOpen &&
-            (<Toast onClose={() => dispatch(closeToast())} show={isToastOpen} delay={3000} autohide
-                style={{
-                    position: 'fixed',
-                    top: "90px",
-                    right: "30px",
-                    zIndex: 7,
-                    border: "1px solid black",
-                }}
-            >
-                <Toast.Header closeButton={false}>
-                    <strong className="mr-auto">{toastMessage}</strong>
-                    {/* <small>just now</small> */}
-                </Toast.Header>
+            {isToastOpen &&
+                (<Toast onClose={() => dispatch(closeToast())} show={isToastOpen} delay={3000} autohide
+                    style={{
+                        position: 'fixed',
+                        top: "90px",
+                        right: "30px",
+                        zIndex: 7,
+                        border: "1px solid black",
+                    }}
+                >
+                    <Toast.Header closeButton={false}>
+                        <strong className="mr-auto">{toastMessage}</strong>
+                        {/* <small>just now</small> */}
+                    </Toast.Header>
 
-            </Toast>)
+                </Toast>)}
         </div>
+
+
     );
 }
 
