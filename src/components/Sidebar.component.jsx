@@ -2,11 +2,15 @@ import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as FoodIcon } from '../assets/food.svg'
-import { removeSelectedItem } from '../redux/actions';
+import { emptySelectedItem, openToast, removeSelectedItem } from '../redux/actions';
 
 function Sidebar() {
     const selectedItems = useSelector(state => state.selectedItems)
     const dispatch = useDispatch()
+    function handleOrder() {
+        dispatch(openToast("Siparişiniz alındı!"))
+        dispatch(emptySelectedItem())
+    }
     return (
         <Col xs={12} md={3} className="position-fixed h-100 text-light">
             <Row>Seçtiğiniz Ürünler</Row>
@@ -22,7 +26,7 @@ function Sidebar() {
                 )
             }
             <Row className="mt-5">
-                <Button disabled={selectedItems.length <= 0} variant="light">Sipariş Ver!</Button>
+                <Button disabled={!selectedItems || selectedItems.length <= 0} onClick={handleOrder} variant="light">Sipariş Ver!</Button>
             </Row>
 
         </Col>

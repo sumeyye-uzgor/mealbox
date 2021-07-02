@@ -8,6 +8,8 @@ const INITIAL_STATE = {
     selectedItems: null,
     selectedMenu: null,
     selectedDiscountMenu: null,
+    isToastOpen: false,
+    toastMessage: null,
 }
 const rootReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -38,6 +40,23 @@ const rootReducer = (state = INITIAL_STATE, action) => {
                 selectedItems: state.selectedItems.filter(
                     item => item.name !== action.payload.name
                 )
+            }
+        case types.EMPTY_SELECTED_ITEM:
+            return {
+                ...state,
+                selectedItems: null
+            }
+        case types.OPEN_TOAST:
+            return {
+                ...state,
+                isToastOpen: true,
+                toastMessage: action.payload
+            }
+        case types.CLOSE_TOAST:
+            return {
+                ...state,
+                isToastOpen: false,
+                toastMessage: null,
             }
         default:
             return state
