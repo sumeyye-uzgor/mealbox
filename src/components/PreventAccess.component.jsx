@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 import TimeLine from './TimeLine.component'
-function PreventAccess({ children, redirectPath = "/", isPassable = false, isPathTrack = true }) {
+import Sidebar from './Sidebar.component'
+function PreventAccess({ children, redirectPath = "/", isPassable = false, isPathTrack = false }) {
     const history = useHistory()
     useEffect(() => {
         if (history.action === 'POP') {
@@ -19,14 +20,18 @@ function PreventAccess({ children, redirectPath = "/", isPassable = false, isPat
 
                     <TimeLine />
 
-
-
                 </Row>
 
                 :
-                <Row className="justify-content-center align-items-center m-0">
+                <Row className="m-0">
+                    <Col className="d-none d-md-block position-fixed" md={2} style={{ paddingTop: "70px" }}>
+                        <Sidebar />
+                    </Col>
+                    <Col className="d-none d-md-block" md={3} />
+                    <Col xs={12} md={9} style={{ paddingTop: "70px" }}>
+                        {children}
+                    </Col>
 
-                    {children}
                 </Row>
 
             }

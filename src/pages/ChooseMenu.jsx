@@ -1,27 +1,39 @@
 import React from 'react'
-import { Card, Col, Button } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { Row } from 'react-bootstrap'
+import MenuCard from '../components/MenuCard.component'
 import PreventAccess from '../components/PreventAccess.component'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { setSelectedMenu, setDiscountSelect } from '../redux/actions'
+import { Link, useHistory } from 'react-router-dom'
 function ChooseMenu() {
+    const dispatch = useDispatch()
+    const history = useHistory()
     const menus = useSelector(state => state.mainMenus)
+    function handleMenuSelection(menu) {
+        if (menu.caption === 'İndirimli Menüler') {
+            dispatch(setDiscountSelect(true))
+            history.push('/indirimlimenusecimi')
+        }
+        else {
+            dispatch(setSelectedMenu(menu))
+            history.push(`/menu/${menu.name.split(' ').join('-').toLowerCase()}`)
+        }
 
-    console.log(menus)
+
+    }
     return (
         <PreventAccess >
-            <Col xs={7} md={6}>
-                <Card style={{ backgroundColor: "black" }}>
-                    {/* <Button className="w-100" variant="light" disabled >Restoranımıza Hoş Geldiniz...</Button> */}
+            {
+                menus &&
+                <Row>
+                    {
+                        menus.items.map(
+                            menu => <MenuCard key={menu.caption} menu={menu} handleSelection={() => handleMenuSelection(menu)} />
+                        )
+                    }
+                </Row>
 
-                    <Card.Title className="text-center text-light">DEneme</Card.Title>
-                    <img src="https://i.ibb.co/k95HKmm/logo.jpg" alt="logo" />
-                    <Card.Title className="text-center text-light">
-                        <Button className="w-100" variant="dark" style={{ backgroundColor: "black" }} >Yemek Seçimi İçin Tıklayın...</Button>
-
-                    </Card.Title>
-
-                </Card>
-            </Col>
+            }
         </PreventAccess>
     )
 }

@@ -3,6 +3,7 @@ import data from './db/menuData'
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'react-bootstrap'
+import StyledNavbar from './components/StyledNavbar.component';
 // import './App.css'
 import routes from './router/index';
 import { Switch, Route } from 'react-router-dom'
@@ -19,6 +20,7 @@ function App() {
   // console.log(menus)
   return (
     <Container fluid className="m-0">
+      <StyledNavbar />
       <Row className="justify-content-center align-items-center m-0 p-0">
         < Switch >
           {
