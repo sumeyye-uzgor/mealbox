@@ -4,7 +4,7 @@ import MenuCard from '../components/MenuCard.component'
 import PreventAccess from '../components/PreventAccess.component'
 import { useDispatch, useSelector } from 'react-redux'
 import { setSelectedMenu, setDiscountSelect, setLastLocation } from '../redux/actions'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 function ChooseMenu() {
     const dispatch = useDispatch()
     const history = useHistory()

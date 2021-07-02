@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-
-// import TimeLine from './TimeLine.component'
 import Sidebar from './Sidebar.component'
 import Topbar from './Topbar.component'
 function PreventAccess({ children, redirectPath = "/" }) {
     const history = useHistory()
-    const dispatch = useDispatch()
     useEffect(() => {
         if (history.action === 'POP') {
             history.push(redirectPath)

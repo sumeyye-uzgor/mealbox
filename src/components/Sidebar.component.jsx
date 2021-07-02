@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
-import { ReactComponent as FoodIcon } from '../assets/food.svg'
 import { emptySelectedItem, openToast, removeSelectedItem, removeDiscountMenu, removeDiscountMenuItem } from '../redux/actions';
 
 function Sidebar() {

@@ -15,7 +15,7 @@ function DiscountMenuItems() {
         setMenus(otherMenus.filter(menu => discMenu.subMenus.includes(menu.key)))
 
 
-    }, []
+    }, [discmenu, otherMenus]
     )
     function handleSelection(item) {
         dispatch(addDiscountMenuItem(item))
