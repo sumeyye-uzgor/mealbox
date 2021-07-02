@@ -8,13 +8,12 @@ import { addDiscountMenuItem } from '../redux/actions'
 
 function DiscountMenuItems() {
     const dispatch = useDispatch()
-    const [isSelectedArray, setIsSelectedArray] = useState([])
     const [menus, setMenus] = useState([])
     const discMenu = useSelector(state => state.selectedDiscountMenu)
     const otherMenus = useSelector(state => state.otherMenus)
     useEffect(() => {
         setMenus(otherMenus.filter(menu => discMenu.subMenus.includes(menu.key)))
-        setIsSelectedArray(menus.map(() => false))
+
 
     }, []
     )

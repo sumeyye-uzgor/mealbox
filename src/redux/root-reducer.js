@@ -80,7 +80,7 @@ const rootReducer = (state = INITIAL_STATE, action) => {
             const menu2 = state.selectedDiscountMenu
             return {
                 ...state,
-                selectedDiscountMenu: { ...menu2, items: menu2.items.filter(item => item.id !== action.payload.id) }
+                selectedDiscountMenu: { ...menu2, items: menu2.items.filter(item => item.name !== action.payload.name) }
             }
         case types.REMOVE_DISCOUNT_MENU:
             return {

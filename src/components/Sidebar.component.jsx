@@ -9,9 +9,30 @@ function Sidebar() {
     const selectedMenu = useSelector(state => state.selectedDiscountMenu)
     const dispatch = useDispatch()
     function handleOrder() {
-        dispatch(openToast("Siparişiniz alındı!"))
-        dispatch(emptySelectedItem())
-        dispatch(removeDiscountMenu())
+        if (selectedMenu) {
+            if (selectedMenu.items) {
+                if (selectedMenu.items.length === selectedMenu.subMenus.length) {
+                    dispatch(openToast("Siparişiniz alındı!"))
+                    dispatch(emptySelectedItem())
+                    dispatch(removeDiscountMenu())
+                }
+                else {
+                    dispatch(openToast("Eksik ya da fazla urun aldiniz. Lutfen, duzeltip tekrar deneyin..."))
+
+                }
+            }
+            else {
+                dispatch(openToast("Siparişiniz alındı!"))
+                dispatch(emptySelectedItem())
+                dispatch(removeDiscountMenu())
+            }
+
+        }
+        else {
+            dispatch(openToast("Siparişiniz alındı!"))
+            dispatch(emptySelectedItem())
+            dispatch(removeDiscountMenu())
+        }
     }
     return (
         <Col xs={12} md={3} className="position-fixed h-100 text-light">
